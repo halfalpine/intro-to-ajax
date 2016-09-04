@@ -15,7 +15,7 @@ function loadData() {
       return cityStr.slice(0, commaIndex);
     };
 
-    var nytURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+    var nytURL = "https://api.nytimestttttttt.com/svc/search/v2/articlesearch.json";
     nytURL += '?' + $.param({
       'api-key': "53583737f41c443da8cce64008269fad",
       'q': pureCity(city)
@@ -36,10 +36,12 @@ function loadData() {
         var lead = value.lead_paragraph || 'Click link for content.';
         items.push('<li class="article"><a class="title" href="#">' + headline + '</a><p class="lead">' + lead + '</p></li>');
       });
-      console.log(pureCity(city));
       $('#nytimes-articles').append(function() {
         return items.join('');
       });
+    }).fail(function() {
+      console.log('foo');
+      $('#nytimes-articles').html('Articles coule not be loaded!');
     });
 
     return false;
